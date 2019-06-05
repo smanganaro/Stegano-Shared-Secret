@@ -88,3 +88,10 @@ typedef struct options_t
     char *directory;
 
 } Options;
+
+
+void distribute_secret ();
+
+void retrieve_secret();
+
+Options * parse_options(int argc, char** argv);

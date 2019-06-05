@@ -3,8 +3,7 @@
 #include <getopt.h>
 #include "stego.h"
 
-void distribute_secret ();
-void retrieve_secret();
+
 
 int main (int argc, char **argv)
 {
@@ -23,5 +22,5 @@ void distribute_secret(){
 }
 
 void retrieve_secret(){
-  
+
 }

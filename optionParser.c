@@ -1,14 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <getopt.h>
+#include "stego.h"
 
+void print_help();
 
 Options * parse_options(int argc, char **argv){
 
   Options * parameters = calloc(1, sizeof(Options));
 
   int c;
+  
   static int mode_flag = -1;
+  static int min_shadows_amount = -1;
+  static int total_amount_of_shadows = -1;
 
   while (1)
     {
@@ -62,15 +67,15 @@ Options * parse_options(int argc, char **argv){
           break;
 
         case 'k':
-          parameter->min_shadows_amount = optarg;
+          parameters->min_shadows_amount = atoi(optarg);
           break;
 
         case 'n':
-          parameter->total_amount_of_shadows = optarg;
+          parameters->total_amount_of_shadows = atoi(optarg);
         break;
 
         case 'x':
-          parameter->directory = optarg;
+          parameters->directory = optarg;
         break;
 
 
@@ -98,14 +103,14 @@ Options * parse_options(int argc, char **argv){
         exit(1);
     }
 
-    if (parameters->min_shadows_amount == NULL)
+    if (parameters->min_shadows_amount == -1)
     {
         fprintf(stderr, "You must specify a minimum amount of shadows needed to retrieve a secret.\n");
         free(parameters);
         exit(1);
     }
 
-    if (parameters->total_amount_of_shadows == NULL)
+    if (parameters->total_amount_of_shadows == -1)
     {
         fprintf(stderr, "You must specify total amount of shadows in which the secret is distributed.\n");
         free(parameters);
