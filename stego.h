@@ -30,6 +30,9 @@
 // Size of a byte
 #define BYTE 0x1
 
+//Random Seed 
+#define SET 10
+
 typedef uint64_t u_int64_t;
 typedef uint32_t u_int32_t; 
 typedef uint16_t u_int16_t; 
@@ -89,9 +92,16 @@ typedef struct options_t
 
 } Options;
 
-
+/*Funciones main*/
 void distribute_secret ();
-
 void retrieve_secret();
-
 Options * parse_options(int argc, char** argv);
+
+
+/*Funciones para mantrices*/
+char ** generateRandomMatrix(int a, int b);
+
+
+/*Funciones para Random*/
+void setSeed(int64_t seed);
+uint8_t nextChar(void); /*devuelve un unsigned char*/ 
