@@ -4,7 +4,11 @@
 
 #define MAX 50
 
-char ** generateRandomMatrix(int a, int b){
+
+
+
+
+char matrix_t* random_matrix(uint32_t rows, uint32_t cols){
 	
 	//TODO
 
