@@ -94,7 +94,7 @@ matrix_t * inverse(matrix_t * m) {
 	// Extend matrix with identity -> (left=matrix to inverse|right=id matrix)
     matrix_t * extended = merge(m, id_matrix(m->rows, m->cols));
     // Reduction -> get id matrix on left side
-    matrix_t * gauss = algorithms_gauss_row_reduction(extended);
+    matrix_t * gauss = gauss_reduction(extended);
     matrix_t * inverse = NEW_MATRIX(m->rows, gauss->cols / 2);
     inverse->rows = m->rows;
     inverse->cols = gauss->cols / 2;
@@ -136,7 +136,7 @@ matrix_t * projection(matrix_t * m) {
  * The rank of a matrix is the amount of columns that are linearly independent
  */
 int rank(matrix_t * m) {
-    matrix_t * gauss = algorithms_gauss_row_reduction(mod_matrix_transpose(m));
+    matrix_t * gauss = gauss_reduction(mod_matrix_transpose(m));
     int zero_rows = 0;
     int count = 0;
     for (int row = 0; row < gauss->rows; row++) {
